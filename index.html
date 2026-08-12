@@ -1,497 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>XCOPUNKS Pixel GiF Art Collection</title>
+<meta name="description" content="XCOPUNKS is a 6000-piece pixel art NFT collection on the Robinhood Chain.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" type="image/jpeg" href="assets/favicon/favicon.jpg">
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:#0a0810;overflow-x:hidden}
-  img{image-rendering:pixelated}
-  a{color:#8fd9a8;text-decoration:none}
-  a:hover{color:#ff2e6b}
-  ::selection{background:#ff2e6b;color:#0a0810}
-  @keyframes flick{0%,100%{opacity:1}50%{opacity:.85}}
-  @keyframes gBurst{0%{transform:translate(0) skewX(0)}20%{transform:translate(-8px,3px) skewX(6deg);text-shadow:6px 0 #ff2e6b,-6px 0 #1e90ff}40%{transform:translate(7px,-4px) skewX(-5deg);clip-path:inset(30% 0 20% 0)}60%{transform:translate(-5px,2px);clip-path:inset(8% 0 60% 0)}80%{transform:translate(4px,-2px);text-shadow:4px 0 #12d18e,-4px 0 #ff2e6b}100%{transform:translate(0)}}
-  .gBurst{animation:gBurst .26s steps(5) both}
-  @keyframes outGlitch{0%{opacity:1;transform:translateY(0)}40%{opacity:1;transform:translateY(-6px)}70%{clip-path:inset(40% 0 40% 0)}100%{opacity:0;transform:translateY(24px)}}
-  .introOut{animation:outGlitch .42s steps(4) forwards}
-  @keyframes scanmove{from{background-position:0 0}to{background-position:0 120px}}
-  .scan{position:fixed;inset:0;pointer-events:none;z-index:60;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0,rgba(0,0,0,.18) 2px,transparent 2px,transparent 4px);animation:scanmove 8s linear infinite;opacity:.45}
-  @keyframes nftG{0%{transform:translate(0);filter:none;clip-path:inset(0)}15%{transform:translate(-7px,2px);filter:hue-rotate(60deg) saturate(2.2)}30%{transform:translate(6px,-3px) skewX(4deg);clip-path:inset(18% 0 42% 0)}45%{transform:translate(-5px,1px);clip-path:inset(55% 0 12% 0);filter:hue-rotate(-40deg) contrast(1.6)}60%{transform:translate(4px,3px);clip-path:inset(0)}75%{transform:translate(-3px,-2px);filter:invert(.12)}100%{transform:translate(0);filter:none;clip-path:inset(0)}}
-  .glitching{animation:nftG .45s steps(6)}
-  @keyframes floatPix{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
-  @keyframes noiseFlash{0%{opacity:0}25%{opacity:.55}100%{opacity:0}}
-  .bgnoise{position:fixed;inset:0;pointer-events:none;z-index:55;opacity:0;mix-blend-mode:overlay;background-image:repeating-linear-gradient(45deg,#fff 0 2px,transparent 2px 5px),repeating-linear-gradient(-45deg,#000 0 2px,transparent 2px 5px)}
-  .bgnoise.bgflash{animation:noiseFlash .5s steps(4)}
-  @keyframes reveal{0%{opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(8px)}100%{opacity:1;clip-path:inset(0);transform:none}}
-  @keyframes gReveal{0%{opacity:0;clip-path:inset(45% 0 45% 0);transform:translateX(-8px)}30%{opacity:1;clip-path:inset(8% 0 60% 0);transform:translateX(6px)}60%{clip-path:inset(60% 0 5% 0);transform:translateX(-4px)}100%{opacity:1;clip-path:inset(0);transform:none}}
-  @keyframes lockScan{from{background-position:0 0}to{background-position:0 40px}}
-</style>
-</helmet>
-<div ref="{{ pageRef }}" style="min-height:100vh;width:100%;background:#8a2be2;transition:background-color 1.4s steps(7);position:relative;overflow-x:hidden;font-family:'VT323',monospace;color:#f2f2f7;display:flex;flex-direction:column">
+<body data-page="home">
+<div class="crt"></div>
 
-  <div class="scan"></div>
-  <div ref="{{ noiseRef }}" class="bgnoise"></div>
-
-  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden">
-    <div class="float" style="position:absolute;top:14%;left:8%;width:16px;height:16px;background:#ff2e6b;opacity:.5;animation:floatPix 5s ease-in-out infinite"></div>
-    <div class="float" style="position:absolute;top:70%;left:12%;width:12px;height:12px;background:#8fd9a8;opacity:.5;animation:floatPix 6.5s ease-in-out infinite .8s"></div>
-    <div class="float" style="position:absolute;top:26%;right:10%;width:20px;height:20px;background:#1e90ff;opacity:.45;animation:floatPix 7s ease-in-out infinite .3s"></div>
-    <div class="float" style="position:absolute;top:82%;right:14%;width:14px;height:14px;background:#c77dff;opacity:.5;animation:floatPix 5.5s ease-in-out infinite 1.2s"></div>
-    <div class="float" style="position:absolute;top:46%;left:4%;width:10px;height:10px;background:#12d18e;opacity:.5;animation:floatPix 6s ease-in-out infinite .6s"></div>
-    <div class="float" style="position:absolute;top:6%;right:24%;width:10px;height:10px;background:#ff2e6b;opacity:.45;animation:floatPix 6.8s ease-in-out infinite 1.6s"></div>
+<div class="intro" id="intro">
+  <div class="intro-scan"></div>
+  <div class="intro-wrap">
+    <div class="intro-layer"><span class="intro-xco">XCO</span></div>
+    <div class="intro-layer"><span class="intro-punks">PUNKS</span></div>
+    <div class="intro-full"><b>XCOPUNKS</b><span>PIXEL ART COLLECTION · ROBINHOOD CHAIN</span></div>
   </div>
-
-  <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
-    <div ref="{{ introRef }}" style="position:fixed;inset:0;z-index:100;background:#05040a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px">
-      <div class="scan" style="opacity:.6"></div>
-      <div ref="{{ introTextRef }}" style="font-family:'Press Start 2P',monospace;font-size:clamp(30px,11vw,74px);color:#fff;letter-spacing:2px;text-shadow:3px 0 #ff2e6b,-3px 0 #1e90ff;animation:flick 1.5s steps(2) infinite;text-align:center">XCO</div>
-      <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:#8fd9a8;opacity:.7;letter-spacing:2px">LOADING . . .</div>
-    </div>
-  </sc-if>
-
-  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
-    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;gap:26px;padding:36px 18px 20px;max-width:640px;margin:0 auto;width:100%">
-
-      <div ref="{{ nftWrapRef }}" style="width:min(78vw,360px);aspect-ratio:1/1;border:5px solid #0a0810;box-shadow:0 0 0 4px #ff2e6b,0 0 0 8px #0a0810,12px 12px 0 rgba(0,0,0,.45);background:#0a0810;position:relative">
-        <img ref="{{ nftImgRef }}" src="assets/nft-1.gif" alt="XCOPUNKS pixel art NFT" style="width:100%;height:100%;display:block"/>
-        <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0,rgba(0,0,0,.14) 2px,transparent 2px,transparent 4px)"></div>
-      </div>
-
-      <div style="text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
-        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:clamp(22px,7vw,40px);color:#fff;letter-spacing:2px;text-shadow:3px 0 #ff2e6b,-3px 0 #1e90ff">XCOPUNKS</h1>
-        <div style="font-family:'Press Start 2P',monospace;font-size:clamp(9px,2.6vw,12px);color:#8fd9a8;letter-spacing:1px">6000 NFTs</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:clamp(9px,2.6vw,12px);color:#c77dff;letter-spacing:1px">PIXEL ART COLLECTION</div>
-        <p style="margin:6px 0 0;font-size:clamp(18px,4.6vw,22px);color:#fff;max-width:420px;line-height:1.35;text-wrap:pretty;text-shadow:2px 2px 0 rgba(0,0,0,.55)">6000 pixel NFTs built for the digital underground.</p>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:16px;width:100%;max-width:340px">
-        <button type="button" onClick="{{ goWhitelist }}" style="font-family:'Press Start 2P',monospace;font-size:clamp(11px,2.9vw,14px);line-height:1.5;color:#fff;background:#0a0810;border:4px solid #ff2e6b;box-shadow:6px 6px 0 #7a1030;padding:18px 20px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;min-height:52px;transition:transform .06s steps(2),box-shadow .06s steps(2),filter .06s" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #7a1030;filter:hue-rotate(-14deg)" style-active="transform:translate(4px,4px);box-shadow:2px 2px 0 #7a1030">JOIN WHITELIST</button>
-        <a href="{{ openseaUrl }}" target="_blank" rel="noopener noreferrer" style="font-family:'Press Start 2P',monospace;font-size:clamp(11px,2.9vw,14px);line-height:1.5;color:#fff;background:#0a0810;border:4px solid #8fd9a8;box-shadow:6px 6px 0 #2f6b45;padding:18px 20px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;min-height:52px;display:flex;align-items:center;justify-content:center;transition:transform .06s steps(2),box-shadow .06s steps(2),filter .06s" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #2f6b45;color:#fff;filter:hue-rotate(14deg)" style-active="transform:translate(4px,4px);box-shadow:2px 2px 0 #2f6b45">MINT ON OPENSEA</a>
-      </div>
-
-      <div aria-disabled="true" style="width:100%;max-width:420px;position:relative;border:4px solid #241a3d;background:#0d0a18;box-shadow:8px 8px 0 rgba(0,0,0,.45);padding:26px 18px;overflow:hidden;margin-top:6px">
-        <div style="position:absolute;inset:0;filter:blur(7px);opacity:.4;pointer-events:none">
-          <div style="position:absolute;top:14px;left:16px;width:64px;height:18px;background:#12d18e"></div>
-          <div style="position:absolute;top:40px;left:16px;width:120px;height:12px;background:#8a2be2"></div>
-          <div style="position:absolute;top:64px;left:16px;width:90px;height:12px;background:#1e90ff"></div>
-          <div style="position:absolute;bottom:16px;right:16px;width:80px;height:34px;background:#ff2e6b"></div>
-        </div>
-        <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.35) 0,rgba(0,0,0,.35) 3px,transparent 3px,transparent 6px);animation:lockScan 3s linear infinite;pointer-events:none"></div>
-        <div style="position:relative;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;pointer-events:none">
-          <div style="font-family:'Press Start 2P',monospace;font-size:18px;color:#f2c94c">&#128274;</div>
-          <div style="font-family:'Press Start 2P',monospace;font-size:clamp(11px,3vw,14px);color:#fff;letter-spacing:1px">STAKE TO EARN</div>
-          <div style="display:inline-block;font-family:'Press Start 2P',monospace;font-size:8px;color:#0a0810;background:#8fd9a8;padding:5px 8px;letter-spacing:1px">LOCKED</div>
-          <p style="margin:2px 0 0;font-size:clamp(16px,4vw,20px);color:#cfc7e0;max-width:300px;line-height:1.35">Coming later. Hold your XCOPUNKS and earn through the future staking system.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <footer style="position:relative;z-index:1;border-top:3px solid #0a0810;padding:18px;display:flex;gap:22px;justify-content:center;align-items:center;background:rgba(10,8,16,.55)">
-      <a href="{{ xUrl }}" target="_blank" rel="noopener noreferrer" style="font-family:'Press Start 2P',monospace;font-size:10px;color:#8fd9a8">X</a>
-      <span style="color:#4a3d66;font-family:'Press Start 2P',monospace;font-size:10px">/</span>
-      <a href="{{ openseaUrl }}" target="_blank" rel="noopener noreferrer" style="font-family:'Press Start 2P',monospace;font-size:10px;color:#8fd9a8">OPENSEA</a>
-    </footer>
-  </sc-if>
-
-  <sc-if value="{{ isWhitelist }}" hint-placeholder-val="{{ false }}">
-    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;gap:20px;padding:32px 18px 40px;max-width:520px;margin:0 auto;width:100%">
-      <button type="button" onClick="{{ goHome }}" style="align-self:flex-start;font-family:'Press Start 2P',monospace;font-size:9px;color:#8fd9a8;background:transparent;border:none;cursor:pointer;letter-spacing:1px;padding:6px" style-hover="color:#ff2e6b">&#60; BACK</button>
-      <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:clamp(16px,5vw,26px);color:#fff;letter-spacing:2px;text-shadow:2px 0 #ff2e6b,-2px 0 #1e90ff;text-align:center">JOIN WHITELIST</h1>
-      <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#c77dff;letter-spacing:1px">{{ stepLabel }}</div>
-
-      <!-- TASK 01: X USERNAME -->
-      <div style="width:100%;border:4px solid #241a3d;background:#0d0a18;box-shadow:6px 6px 0 rgba(0,0,0,.4);padding:20px;display:flex;flex-direction:column;gap:12px">
-        <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#8fd9a8;letter-spacing:1px">01 &middot; X USERNAME</div>
-        <sc-if value="{{ usernameActive }}" hint-placeholder-val="{{ true }}">
-          <input type="text" aria-label="X username" placeholder="@yourusername" value="{{ username }}" onInput="{{ onUsername }}" style="font-family:'VT323',monospace;font-size:clamp(18px,4.5vw,22px);color:#c7ffd8;background:#05040a;border:3px solid #8fd9a8;padding:12px 14px;width:100%;outline:none;letter-spacing:1px" style-focus="border-color:#ff2e6b;box-shadow:0 0 0 3px #3a1f6b"/>
-          <button type="button" onClick="{{ submitUsername }}" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#fff;background:#0a0810;border:4px solid #c77dff;box-shadow:5px 5px 0 #4a2d6b;padding:14px;cursor:pointer;letter-spacing:1px;min-height:48px;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);box-shadow:8px 8px 0 #4a2d6b" style-active="transform:translate(3px,3px);box-shadow:2px 2px 0 #4a2d6b">SUBMIT</button>
-        </sc-if>
-        <sc-if value="{{ usernameDone }}" hint-placeholder-val="{{ false }}">
-          <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#12d18e;letter-spacing:1px">[OK] {{ username }}</div>
-        </sc-if>
-      </div>
-
-      <!-- TASK 02: FOLLOW -->
-      <sc-if value="{{ showFollow }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;border:4px solid #241a3d;background:#0d0a18;box-shadow:6px 6px 0 rgba(0,0,0,.4);padding:20px;display:flex;flex-direction:column;gap:12px;animation:reveal .4s steps(5)">
-          <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#8fd9a8;letter-spacing:1px">02 &middot; FOLLOW @XCOPUNKS</div>
-          <sc-if value="{{ followActive }}" hint-placeholder-val="{{ true }}">
-            <a href="{{ xUrl }}" target="_blank" rel="noopener noreferrer" onClick="{{ clickFollow }}" style="font-family:'Press Start 2P',monospace;font-size:11px;color:#fff;background:#0a0810;border:4px solid #1e90ff;box-shadow:5px 5px 0 #143a66;padding:14px;text-align:center;letter-spacing:1px;min-height:48px;display:flex;align-items:center;justify-content:center;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);color:#fff;box-shadow:8px 8px 0 #143a66" style-active="transform:translate(3px,3px)">FOLLOW ON X</a>
-            <sc-if value="{{ followVerifyLocked }}" hint-placeholder-val="{{ true }}">
-              <button type="button" disabled="disabled" aria-disabled="true" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#6a6485;background:#0a0810;border:4px solid #3a3550;padding:14px;letter-spacing:1px;min-height:48px;cursor:not-allowed">VERIFY FOLLOW</button>
-              <div style="font-size:15px;color:#7d6fa0;line-height:1.3">Locked. Click FOLLOW ON X first.</div>
-            </sc-if>
-            <sc-if value="{{ followVerifyReady }}" hint-placeholder-val="{{ false }}">
-              <button type="button" onClick="{{ verifyFollow }}" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#fff;background:#0a0810;border:4px solid #c77dff;box-shadow:5px 5px 0 #4a2d6b;padding:14px;cursor:pointer;letter-spacing:1px;min-height:48px;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);box-shadow:8px 8px 0 #4a2d6b" style-active="transform:translate(3px,3px);box-shadow:2px 2px 0 #4a2d6b">VERIFY FOLLOW</button>
-              <div style="font-size:15px;color:#7d6fa0;line-height:1.3">Real X API verification connects here when enabled.</div>
-            </sc-if>
-          </sc-if>
-          <sc-if value="{{ followDone }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#12d18e;letter-spacing:1px">[OK] TASK LOGGED</div>
-          </sc-if>
-        </div>
-      </sc-if>
-
-      <!-- TASK 03: LIKE + REPOST -->
-      <sc-if value="{{ showLikeRepost }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;border:4px solid #241a3d;background:#0d0a18;box-shadow:6px 6px 0 rgba(0,0,0,.4);padding:20px;display:flex;flex-direction:column;gap:12px;animation:reveal .4s steps(5)">
-          <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#8fd9a8;letter-spacing:1px">03 &middot; LIKE + REPOST THE PINNED POST</div>
-          <sc-if value="{{ lrActive }}" hint-placeholder-val="{{ true }}">
-            <a href="{{ xUrl }}" target="_blank" rel="noopener noreferrer" onClick="{{ clickLikeRepost }}" style="font-family:'Press Start 2P',monospace;font-size:11px;color:#fff;background:#0a0810;border:4px solid #1e90ff;box-shadow:5px 5px 0 #143a66;padding:14px;text-align:center;letter-spacing:1px;min-height:48px;display:flex;align-items:center;justify-content:center;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);color:#fff;box-shadow:8px 8px 0 #143a66" style-active="transform:translate(3px,3px)">OPEN PINNED POST</a>
-            <sc-if value="{{ lrVerifyLocked }}" hint-placeholder-val="{{ true }}">
-              <button type="button" disabled="disabled" aria-disabled="true" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#6a6485;background:#0a0810;border:4px solid #3a3550;padding:14px;letter-spacing:1px;min-height:48px;cursor:not-allowed">VERIFY LIKE + REPOST</button>
-              <div style="font-size:15px;color:#7d6fa0;line-height:1.3">Locked. Click OPEN PINNED POST first.</div>
-            </sc-if>
-            <sc-if value="{{ lrVerifyReady }}" hint-placeholder-val="{{ false }}">
-              <button type="button" onClick="{{ verifyLikeRepost }}" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#fff;background:#0a0810;border:4px solid #c77dff;box-shadow:5px 5px 0 #4a2d6b;padding:14px;cursor:pointer;letter-spacing:1px;min-height:48px;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);box-shadow:8px 8px 0 #4a2d6b" style-active="transform:translate(3px,3px);box-shadow:2px 2px 0 #4a2d6b">VERIFY LIKE + REPOST</button>
-              <div style="font-size:15px;color:#7d6fa0;line-height:1.3">Real X API verification connects here when enabled.</div>
-            </sc-if>
-          </sc-if>
-          <sc-if value="{{ lrDone }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#12d18e;letter-spacing:1px">[OK] TASK LOGGED</div>
-          </sc-if>
-        </div>
-      </sc-if>
-
-      <!-- TASK 04: COMMENT -->
-      <sc-if value="{{ showComment }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;border:4px solid #241a3d;background:#0d0a18;box-shadow:6px 6px 0 rgba(0,0,0,.4);padding:20px;display:flex;flex-direction:column;gap:12px;animation:reveal .4s steps(5)">
-          <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#8fd9a8;letter-spacing:1px">04 &middot; COMMENT ON THE PINNED POST</div>
-          <div style="font-size:17px;color:#e7e2f5;line-height:1.35">Tag 2 friends in your comment.</div>
-          <sc-if value="{{ cActive }}" hint-placeholder-val="{{ true }}">
-            <a href="{{ xUrl }}" target="_blank" rel="noopener noreferrer" onClick="{{ clickComment }}" style="font-family:'Press Start 2P',monospace;font-size:11px;color:#fff;background:#0a0810;border:4px solid #1e90ff;box-shadow:5px 5px 0 #143a66;padding:14px;text-align:center;letter-spacing:1px;min-height:48px;display:flex;align-items:center;justify-content:center;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);color:#fff;box-shadow:8px 8px 0 #143a66" style-active="transform:translate(3px,3px)">OPEN PINNED POST</a>
-            <sc-if value="{{ cVerifyLocked }}" hint-placeholder-val="{{ true }}">
-              <button type="button" disabled="disabled" aria-disabled="true" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#6a6485;background:#0a0810;border:4px solid #3a3550;padding:14px;letter-spacing:1px;min-height:48px;cursor:not-allowed">VERIFY COMMENT</button>
-              <div style="font-size:15px;color:#7d6fa0;line-height:1.3">Locked. Click OPEN PINNED POST first.</div>
-            </sc-if>
-            <sc-if value="{{ cVerifyReady }}" hint-placeholder-val="{{ false }}">
-              <button type="button" onClick="{{ verifyComment }}" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#fff;background:#0a0810;border:4px solid #c77dff;box-shadow:5px 5px 0 #4a2d6b;padding:14px;cursor:pointer;letter-spacing:1px;min-height:48px;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);box-shadow:8px 8px 0 #4a2d6b" style-active="transform:translate(3px,3px);box-shadow:2px 2px 0 #4a2d6b">VERIFY COMMENT</button>
-              <div style="font-size:15px;color:#7d6fa0;line-height:1.3">Real X API verification connects here when enabled.</div>
-            </sc-if>
-          </sc-if>
-          <sc-if value="{{ cDone }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#12d18e;letter-spacing:1px">[OK] TASK LOGGED</div>
-          </sc-if>
-        </div>
-      </sc-if>
-
-      <!-- COMMENT LINK (hidden until comment verified; glitch reveal) -->
-      <sc-if value="{{ showCommentLink }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;border:4px solid #ff2e6b;background:#0d0a18;box-shadow:6px 6px 0 rgba(122,16,48,.5);padding:20px;display:flex;flex-direction:column;gap:12px;animation:gReveal .5s steps(6)">
-          <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#ff9ec2;letter-spacing:1px">05 &middot; COMMENT LINK</div>
-          <sc-if value="{{ commentLinkActive }}" hint-placeholder-val="{{ true }}">
-            <input type="url" aria-label="Comment link" placeholder="https://x.com/..." value="{{ commentLink }}" onInput="{{ onCommentLink }}" style="font-family:'VT323',monospace;font-size:clamp(18px,4.5vw,22px);color:#ffd6e6;background:#05040a;border:3px solid #ff2e6b;padding:12px 14px;width:100%;outline:none;letter-spacing:1px" style-focus="box-shadow:0 0 0 3px #3a1f6b"/>
-            <sc-if value="{{ commentLinkError }}" hint-placeholder-val="{{ false }}">
-              <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:#ff5a7a;letter-spacing:1px">{{ commentLinkError }}</div>
-            </sc-if>
-            <button type="button" onClick="{{ submitCommentLink }}" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#fff;background:#0a0810;border:4px solid #ff2e6b;box-shadow:5px 5px 0 #7a1030;padding:14px;cursor:pointer;letter-spacing:1px;min-height:48px;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);box-shadow:8px 8px 0 #7a1030" style-active="transform:translate(3px,3px);box-shadow:2px 2px 0 #7a1030">SUBMIT COMMENT</button>
-          </sc-if>
-          <sc-if value="{{ commentLinkDone }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#12d18e;letter-spacing:1px">[OK] LINK SAVED</div>
-          </sc-if>
-        </div>
-      </sc-if>
-
-      <!-- WALLET (hidden until comment link submitted) -->
-      <sc-if value="{{ showWallet }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;border:4px solid #12d18e;background:#0d0a18;box-shadow:6px 6px 0 rgba(10,107,69,.5);padding:20px;display:flex;flex-direction:column;gap:12px;animation:gReveal .5s steps(6)">
-          <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#8fd9a8;letter-spacing:1px">06 &middot; ETH WALLET ADDRESS</div>
-          <input type="text" aria-label="ETH wallet address" placeholder="0x..." value="{{ wallet }}" onInput="{{ onWallet }}" style="font-family:'VT323',monospace;font-size:clamp(18px,4.5vw,22px);color:#c7ffd8;background:#05040a;border:3px solid #8fd9a8;padding:12px 14px;width:100%;outline:none;letter-spacing:1px" style-focus="border-color:#ff2e6b;box-shadow:0 0 0 3px #3a1f6b"/>
-          <sc-if value="{{ walletError }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:#ff5a7a;letter-spacing:1px">{{ walletError }}</div>
-          </sc-if>
-          <button type="button" onClick="{{ submitWallet }}" style="font-family:'Press Start 2P',monospace;font-size:12px;color:#fff;background:#0a0810;border:4px solid #12d18e;box-shadow:5px 5px 0 #0a6b45;padding:14px;cursor:pointer;letter-spacing:1px;min-height:48px;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);box-shadow:8px 8px 0 #0a6b45" style-active="transform:translate(3px,3px);box-shadow:2px 2px 0 #0a6b45">{{ walletBtnLabel }}</button>
-        </div>
-      </sc-if>
-    </div>
-  </sc-if>
-
-  <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
-    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:40px 20px;text-align:center;min-height:100vh">
-      <div style="font-family:'Press Start 2P',monospace;font-size:clamp(18px,6vw,32px);color:#fff;letter-spacing:2px;text-shadow:3px 0 #ff2e6b,-3px 0 #1e90ff;animation:flick 1.6s steps(2) infinite">CONGRATULATIONS</div>
-      <div style="font-family:'Press Start 2P',monospace;font-size:clamp(13px,3.6vw,18px);color:#12d18e;letter-spacing:1px;line-height:1.7">YOU HAVE SECURED<br/>GTD ACCESS</div>
-      <p style="margin:0;font-size:clamp(17px,4.4vw,21px);color:#e7e2f5;max-width:360px;line-height:1.4">Mint updates will be announced on X.</p>
-      <div style="display:flex;gap:14px;margin-top:8px">
-        <a href="{{ xUrl }}" target="_blank" rel="noopener noreferrer" style="font-family:'Press Start 2P',monospace;font-size:10px;color:#fff;background:#0a0810;border:3px solid #c77dff;box-shadow:4px 4px 0 #4a2d6b;padding:12px 16px;min-height:44px;display:flex;align-items:center" style-hover="transform:translate(-2px,-2px);color:#fff" style-active="transform:translate(2px,2px)">X</a>
-        <a href="{{ openseaUrl }}" target="_blank" rel="noopener noreferrer" style="font-family:'Press Start 2P',monospace;font-size:10px;color:#fff;background:#0a0810;border:3px solid #1e90ff;box-shadow:4px 4px 0 #143a66;padding:12px 16px;min-height:44px;display:flex;align-items:center" style-hover="transform:translate(-2px,-2px);color:#fff" style-active="transform:translate(2px,2px)">OPENSEA</a>
-      </div>
-      <button type="button" onClick="{{ finishHome }}" style="margin-top:14px;font-family:'Press Start 2P',monospace;font-size:12px;color:#fff;background:#0a0810;border:4px solid #ff2e6b;box-shadow:6px 6px 0 #7a1030;padding:16px 22px;cursor:pointer;letter-spacing:1px;min-height:52px;transition:transform .06s steps(2)" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #7a1030" style-active="transform:translate(4px,4px);box-shadow:2px 2px 0 #7a1030">BACK TO HOME</button>
-    </div>
-  </sc-if>
-
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;}}">
-class Component extends DCLogic {
-  pageRef = React.createRef();
-  noiseRef = React.createRef();
-  introRef = React.createRef();
-  introTextRef = React.createRef();
-  nftImgRef = React.createRef();
-  nftWrapRef = React.createRef();
 
-  WL_KEY = "xcopunks_wl_v1";
+<header class="hdr">
+  <div class="hdr-inner">
+    <nav class="nav-desktop">
+      <a class="navbtn active" href="./">GALLERY</a>
+      <a class="navbtn" href="stake/">STAKE</a>
+      <a class="navbtn" href="my-staking/">MY STAKING</a>
+      <a class="navbtn" href="season-1/">SEASON 1</a>
+      <a class="navbtn" href="vault/">VAULT</a>
+      <a class="navbtn" href="how-it-works/">HOW IT WORKS</a>
+      <a class="navbtn" href="whitelist/">WHITELIST</a>
+    </nav>
+    <div class="nav-mobile">
+      <a class="brand" href="./">XCOPUNKS</a>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu" hidden>
+  <div class="menu-top"><span class="brand">XCOPUNKS</span><button class="menu-close" id="menuClose" aria-label="Close menu">X</button></div>
+  <nav class="menu-list">
+    <a class="active" href="./">GALLERY</a>
+    <a href="stake/">STAKE</a>
+    <a href="my-staking/">MY STAKING</a>
+    <a href="season-1/">SEASON 1</a>
+    <a href="vault/">VAULT</a>
+    <a href="how-it-works/">HOW IT WORKS</a>
+    <a href="whitelist/">WHITELIST</a>
+  </nav>
+</div>
 
-  // ============ CONFIG — single source of truth ============
-  static get CFG() {
-    return {
-      PROJECT_NAME: "XCOPUNKS",
-      SUPPLY: "6000",
-      X_USERNAME: "@XCOPUNKS",
-      X_URL: "https://x.com/XCOPUNKS/status/2087079291347714419",
-      OPENSEA_URL: "https://opensea.io/collection/xcopunks/overview",
-      // Paste your NEW Google Apps Script Web App URL here (the only value you need):
-      GOOGLE_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzfw2pvnfAbzRwSK5mATsi0MN2sDhHxMQjKB_hcbVo1vTZOsysv5yIlGAmMWpsP-N4j/exec",
-      NFTS: ["assets/nft-1.gif", "assets/nft-2.gif", "assets/nft-3.gif", "assets/nft-4.gif"],
-      BG: ["#12d18e", "#8a2be2", "#3a1f6b", "#1e90ff", "#7fe0a0", "#ff2e6b", "#141430", "#0a0810"],
-      // Real X verification hooks up here. While false, VERIFY is an honest
-      // gate: the user MUST perform the on-X action first, and the flow NEVER
-      // claims a real X API verification actually happened.
-      X_API_ENABLED: false
-    };
-  }
+<main>
+  <section class="section mw-1440">
+    <div class="g-head">
+      <div>
+        <h1 class="h-title">THE GALLERY</h1>
+        <p class="lead">Four walls. Four XCOPUNKS. Step to the center of the exhibition.</p>
+      </div>
+      <div style="font-family:'Silkscreen',monospace;font-size:11px;color:#ffe500;border:2px solid #ffe500;padding:8px 10px;">ROOM 01 / <span id="gIdx">1 / 4</span></div>
+    </div>
 
-  // Strict, single-source-of-truth state machine.
-  // 0 usernameRequired  1 followActionRequired   2 followVerifyRequired
-  // 3 likeRepostAction   4 likeRepostVerify       5 commentAction
-  // 6 commentVerify      7 commentLinkRequired    8 walletRequired  9 success
-  state = {
-    screen: "intro",
-    wlStep: 0,
-    username: "", commentLink: "", commentLinkError: "",
-    wallet: "", walletError: "", submitting: false
-  };
+    <div class="g-room">
+      <div class="g-ceil"></div><div class="g-ceil2"></div>
+      <div class="g-floor"></div><div class="g-floor2"></div>
+      <div class="g-west"></div>
+      <div class="g-sideframe w"><div class="g-fr-w"><img id="gWest" src="assets/gif/4.gif" alt="XCOPUNKS west wall artwork"></div><div class="g-sidelbl" style="color:#ff7a00">WEST</div></div>
+      <div class="g-east"></div>
+      <div class="g-sideframe e"><div class="g-fr-e"><img id="gEast" src="assets/gif/2.gif" alt="XCOPUNKS east wall artwork"></div><div class="g-sidelbl" style="color:#00e0ff">EAST</div></div>
+      <div class="g-back">
+        <div class="g-light"></div>
+        <div class="g-frame">
+          <div class="g-frame-in"><img id="gFront" src="assets/gif/1.gif" alt="XCOPUNKS featured artwork"></div>
+          <div class="g-cap"><b id="gId">XCO #0417</b><span id="gWall">NORTH WALL</span></div>
+        </div>
+      </div>
+      <div class="g-plaque"><b>XCOPUNKS</b><span>6000 NFTs · Pixel Art Collection<br>Robinhood Chain</span></div>
+    </div>
 
-  _timers = [];
+    <div class="g-ctrls">
+      <button class="g-btn" id="gPrev">◄ PREV<small>TURN LEFT</small></button>
+      <button class="g-btn y" id="gBack">BACK<small>RECENTER</small></button>
+      <button class="g-btn" id="gNext">NEXT ►<small>TURN RIGHT</small></button>
+    </div>
 
-  componentDidMount() {
-    const setTxt = (t) => { if (this.introTextRef.current) this.introTextRef.current.textContent = t; };
-    const burst = () => {
-      const el = this.introTextRef.current; if (!el) return;
-      el.classList.add("gBurst");
-      setTimeout(() => el.classList.remove("gBurst"), 260);
-    };
-    setTxt("XCO");
-    this._timers.push(setTimeout(() => { burst(); setTxt("PUNKS"); }, 1300));
-    this._timers.push(setTimeout(() => { burst(); setTxt("XCOPUNKS"); }, 2700));
-    this._timers.push(setTimeout(() => { if (this.introRef.current) this.introRef.current.classList.add("introOut"); }, 4050));
-    this._timers.push(setTimeout(() => { this.setState({ screen: "home" }); }, 4550));
+    <div class="g-cta">
+      <a class="btn btn-red" href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">MINT ON OPENSEA</a>
+      <a class="btn btn-outline" href="stake/">ENTER STAKING</a>
+      <a class="btn btn-yellow" href="whitelist/">JOIN WHITELIST</a>
+    </div>
+  </section>
 
-    Component.CFG.NFTS.forEach((src) => { const im = new Image(); im.src = src; });
-
-    this._nftI = 0;
-    this._bgI = 1;
-    this._nftTimer = setInterval(() => this.glitchNext(), 3000);
-    this._bgTimer = setInterval(() => this.cycleBg(), 12000);
-  }
-
-  componentWillUnmount() {
-    this._timers.forEach(clearTimeout);
-    clearInterval(this._nftTimer);
-    clearInterval(this._bgTimer);
-  }
-
-  // ---- refresh-safe persistence of the legitimate step only ----
-  loadWL() {
-    try {
-      const r = JSON.parse(localStorage.getItem(this.WL_KEY) || "null");
-      if (r && typeof r.wlStep === "number" && r.wlStep >= 0 && r.wlStep <= 9) {
-        this.setState({ wlStep: r.wlStep, username: r.username || "", commentLink: r.commentLink || "", wallet: r.wallet || "" });
-      }
-    } catch (e) {}
-  }
-  persist() {
-    try {
-      const s = this.state;
-      localStorage.setItem(this.WL_KEY, JSON.stringify({ wlStep: s.wlStep, username: s.username, commentLink: s.commentLink, wallet: s.wallet }));
-    } catch (e) {}
-  }
-  // Advance the machine by exactly one legitimate step and persist it.
-  setStep(step, extra) {
-    const patch = Object.assign({ wlStep: step }, extra || {});
-    this.setState(patch, () => this.persist());
-  }
-
-  glitchNext() {
-    if (this.state.screen !== "home") return;
-    const CFG = Component.CFG;
-    const wrap = this.nftWrapRef.current, img = this.nftImgRef.current;
-    if (!wrap || !img) return;
-    wrap.classList.add("glitching");
-    this._nftI = (this._nftI + 1) % CFG.NFTS.length;
-    setTimeout(() => { if (this.nftImgRef.current) this.nftImgRef.current.src = CFG.NFTS[this._nftI]; }, 210);
-    setTimeout(() => { if (this.nftWrapRef.current) this.nftWrapRef.current.classList.remove("glitching"); }, 460);
-  }
-
-  cycleBg() {
-    if (this.state.screen !== "home") return;
-    const CFG = Component.CFG;
-    this._bgI = (this._bgI + 1) % CFG.BG.length;
-    if (this.pageRef.current) this.pageRef.current.style.backgroundColor = CFG.BG[this._bgI];
-    const n = this.noiseRef.current;
-    if (n) { n.classList.add("bgflash"); setTimeout(() => n.classList.remove("bgflash"), 520); }
-  }
-
-  submitToSheet(wallet) {
-    // Guard: only the final legitimate step may submit.
-    if (this.state.wlStep !== 8) return;
-    const url = Component.CFG.GOOGLE_SCRIPT_URL;
-
-    // Form-encoded body (URLSearchParams) => simple request, no JSON preflight/CORS.
-    const body = new URLSearchParams();
-    body.append("xUsername", this.state.username);
-    body.append("commentLink", this.state.commentLink);
-    body.append("walletAddress", wallet);
-
-    console.log("Sending whitelist submission...");
-    console.log("Google Script URL:", url);
-
-    const fail = () => this.setState({ submitting: false, walletError: "SUBMISSION FAILED - PLEASE TRY AGAIN" });
-    const ok = () => this.setStep(9, { screen: "success", submitting: false, walletError: "" });
-
-    if (!url || url === "PASTE_YOUR_NEW_WEB_APP_URL_HERE") {
-      console.warn("[XCOPUNKS] GOOGLE_SCRIPT_URL is not set — cannot submit.");
-      fail();
-      return;
-    }
-
-    // Simple form-encoded POST always reaches Apps Script. Google's /exec often
-    // omits CORS headers on the reply, so a resolved fetch = the row was written
-    // (success); only a true network failure rejects the promise (retry).
-    fetch(url, { method: "POST", body: body })
-      .then(() => { console.log("Submission sent."); ok(); })
-      .catch((err) => { console.error("Submission error:", err); fail(); });
-  }
-
-  renderVals() {
-    const CFG = Component.CFG;
-    const s = this.state;
-    const st = s.wlStep;
-
-    const taskNum = st === 0 ? 1 : (st <= 2 ? 2 : (st <= 4 ? 3 : (st <= 6 ? 4 : (st === 7 ? 5 : 6))));
-
-    return {
-      isIntro: s.screen === "intro",
-      isHome: s.screen === "home",
-      isWhitelist: s.screen === "whitelist",
-      isSuccess: s.screen === "success",
-
-      xUrl: CFG.X_URL,
-      openseaUrl: CFG.OPENSEA_URL,
-
-      pageRef: this.pageRef,
-      noiseRef: this.noiseRef,
-      introRef: this.introRef,
-      introTextRef: this.introTextRef,
-      nftImgRef: this.nftImgRef,
-      nftWrapRef: this.nftWrapRef,
-
-      stepLabel: "STEP " + taskNum + " / 6",
-
-      // ---- values ----
-      username: s.username,
-      commentLink: s.commentLink,
-      commentLinkError: s.commentLinkError,
-      wallet: s.wallet,
-      walletError: s.walletError,
-      walletBtnLabel: s.submitting ? "SUBMITTING..." : "SUBMIT WALLET",
-
-      // ---- strict visibility / button states, all derived from wlStep ----
-      usernameActive: st === 0,
-      usernameDone: st >= 1,
-
-      showFollow: st >= 1,
-      followActive: st === 1 || st === 2,
-      followVerifyLocked: st === 1,
-      followVerifyReady: st === 2,
-      followDone: st >= 3,
-
-      showLikeRepost: st >= 3,
-      lrActive: st === 3 || st === 4,
-      lrVerifyLocked: st === 3,
-      lrVerifyReady: st === 4,
-      lrDone: st >= 5,
-
-      showComment: st >= 5,
-      cActive: st === 5 || st === 6,
-      cVerifyLocked: st === 5,
-      cVerifyReady: st === 6,
-      cDone: st >= 7,
-
-      showCommentLink: st >= 7,
-      commentLinkActive: st === 7,
-      commentLinkDone: st >= 8,
-
-      showWallet: st >= 8,
-
-      // ---- navigation ----
-      // Entering the whitelist ALWAYS starts a fresh, strictly-sequential run
-      // so stale saved progress can never trap the user or skip a step.
-      goWhitelist: () => {
-        try { localStorage.removeItem(this.WL_KEY); } catch (e) {}
-        this.setState({ screen: "whitelist", wlStep: 0, username: "", commentLink: "", commentLinkError: "", wallet: "", walletError: "", submitting: false });
-      },
-      goHome: () => this.setState({ screen: "home" }),
-      finishHome: () => {
-        try { localStorage.removeItem(this.WL_KEY); } catch (e) {}
-        this.setState({ screen: "home", wlStep: 0, username: "", commentLink: "", commentLinkError: "", wallet: "", walletError: "", submitting: false });
-      },
-
-      // ---- inputs ----
-      onUsername: (e) => this.setState({ username: e.target.value }),
-      onCommentLink: (e) => this.setState({ commentLink: e.target.value, commentLinkError: "" }),
-      onWallet: (e) => this.setState({ wallet: e.target.value, walletError: "" }),
-
-      // ---- guarded transitions: each rejects unless in its required step ----
-      submitUsername: () => {
-        if (this.state.wlStep !== 0) return;
-        const u = this.state.username.trim().replace(/^@+/, "");
-        if (!u) return;
-        this.setStep(1, { username: "@" + u });
-      },
-      clickFollow: () => { if (this.state.wlStep === 1) this.setStep(2); },
-      verifyFollow: () => {
-        if (this.state.wlStep !== 2) return;              // cannot verify before FOLLOW ON X
-        if (Component.CFG.X_API_ENABLED) return;          // real API confirms server-side, then advances
-        this.setStep(3);
-      },
-      clickLikeRepost: () => { if (this.state.wlStep === 3) this.setStep(4); },
-      verifyLikeRepost: () => {
-        if (this.state.wlStep !== 4) return;
-        if (Component.CFG.X_API_ENABLED) return;
-        this.setStep(5);
-      },
-      clickComment: () => { if (this.state.wlStep === 5) this.setStep(6); },
-      verifyComment: () => {
-        if (this.state.wlStep !== 6) return;
-        if (Component.CFG.X_API_ENABLED) return;
-        this.setStep(7);
-      },
-      submitCommentLink: () => {
-        if (this.state.wlStep !== 7) return;
-        const l = this.state.commentLink.trim();
-        if (!/^https?:\/\/\S+/i.test(l)) { this.setState({ commentLinkError: "ENTER A VALID LINK" }); return; }
-        this.setStep(8, { commentLink: l });
-      },
-      submitWallet: () => {
-        if (this.state.wlStep !== 8) return;
-        const w = this.state.wallet.trim();
-        if (!/^0x[a-fA-F0-9]{40}$/.test(w)) { this.setState({ walletError: "INVALID ETH ADDRESS" }); return; }
-        this.setState({ wallet: w, walletError: "", submitting: true }, () => this.submitToSheet(w));
-      }
-    };
-  }
-}
-</script>
+  <footer class="ftr">
+    <div class="ftr-inner">
+      <div><div class="ftr-brand">XCOPUNKS</div><div class="ftr-sub">6000 NFTs · Pixel Art Collection · Robinhood Chain</div></div>
+      <div class="ftr-links">
+        <a href="https://x.com/XCOPUNKS" target="_blank" rel="noopener">X / @XCOPUNKS</a>
+        <a class="os" href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">OPENSEA</a>
+      </div>
+    </div>
+  </footer>
+</main>
+<script src="js/main.js"></script>
 </body>
 </html>
