@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XCOPUNKS — 24-Hour Reward Campaign</title>
+<meta name="description" content="Stake XCOPUNKS NFTs in the 24-hour reward campaign and earn $XCPN rewards.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" type="image/jpeg" href="../assets/favicon/favicon.jpg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="reward">
+<div class="crt"></div>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <nav class="nav-desktop">
+      <a class="navbtn" href="../">GALLERY</a>
+      <a class="navbtn" href="../stake/">STAKE</a>
+      <a class="navbtn" href="../my-staking/">MY STAKING</a>
+      <a class="navbtn" href="../season-1/">SEASON 1</a>
+      <a class="navbtn" href="../vault/">VAULT</a>
+      <a class="navbtn" href="../how-it-works/">HOW IT WORKS</a>
+      <a class="navbtn" href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">OPENSEA</a>
+      <button class="navbtn" data-xcpn>$XCPN</button>
+    </nav>
+    <div class="nav-mobile">
+      <a class="brand" href="../">XCOPUNKS</a>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu" hidden>
+  <div class="menu-top"><span class="brand">XCOPUNKS</span><button class="menu-close" id="menuClose" aria-label="Close menu">X</button></div>
+  <nav class="menu-list">
+    <a href="../">GALLERY</a>
+    <a href="../stake/">STAKE</a>
+    <a href="../my-staking/">MY STAKING</a>
+    <a href="../season-1/">SEASON 1</a>
+    <a href="../vault/">VAULT</a>
+    <a href="../how-it-works/">HOW IT WORKS</a>
+    <a href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">OPENSEA</a>
+    <button data-xcpn>$XCPN TOKEN</button>
+  </nav>
+</div>
+
+<main>
+  <section class="section mw-1200">
+    <a class="back" href="../">◄ BACK TO GALLERY</a>
+    <div class="rail red">
+      <h1 class="h-title red">24-HOUR REWARD CAMPAIGN</h1>
+      <p class="lead">Stake XCOPUNKS NFTs. Earn $XCPN rewards. A separate campaign from 7-day staking.</p>
+    </div>
+
+    <div class="stats" style="margin-bottom:26px;">
+      <div class="stat red"><div class="stat-l">CAMPAIGN CAPACITY</div><div class="stat-v red">2,000 NFTS</div></div>
+      <div class="stat yellow"><div class="stat-l">REWARD PER NFT</div><div class="stat-txt" style="color:#ffe500" id="rewardRule">READING FROM CONTRACT...</div></div>
+      <div class="stat cyan"><div class="stat-l">LOCK PER NFT</div><div class="stat-v cyan">24 HOURS</div></div>
+    </div>
+
+    <div class="cdbig">
+      <div class="cdbig-lbl" id="cdLabel">READING CAMPAIGN WINDOW FROM CONTRACT...</div>
+      <div class="cdbig-row">
+        <div class="cdbig-cell"><div class="cdbig-num" id="cdD">--</div><div class="cdbig-l">DAYS</div></div>
+        <div class="cdbig-cell"><div class="cdbig-num" id="cdH">--</div><div class="cdbig-l">HOURS</div></div>
+        <div class="cdbig-cell"><div class="cdbig-num" id="cdM">--</div><div class="cdbig-l">MINS</div></div>
+        <div class="cdbig-cell red"><div class="cdbig-num" id="cdS">--</div><div class="cdbig-l">SECS</div></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:26px;">
+      <div class="panel-h">CAMPAIGN CAPACITY</div>
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:'Press Start 2P',monospace;font-size:16px;color:#b8ff00;">
+        <span id="capStaked">—</span><span style="color:#666;">/</span><span id="capCap">2,000</span>
+        <span style="font-family:'Silkscreen',monospace;font-size:10px;color:#ff7a00;">NFTS STAKED</span>
+        <span id="capLeft" style="font-family:'Silkscreen',monospace;font-size:10px;color:#00e0ff;">—</span>
+      </div>
+      <div style="margin-top:12px;height:14px;border:2px solid #1f1f1f;background:#0d0f10;">
+        <div id="capBar" style="height:100%;width:0%;background:#b8ff00;"></div>
+      </div>
+      <div class="note" style="margin-top:12px;" id="capNote">Reading live capacity from the campaign contract...</div>
+    </div>
+
+    <div class="note solid" style="margin-bottom:26px;">
+      Two separate clocks. The campaign entry window is open for 24 hours or until 2,000 NFTs have entered, whichever comes first.
+      Each NFT then runs its own 24-hour reward period from the exact moment it was staked — an NFT staked at 10:30 UTC unlocks at 10:30 UTC the next day.
+    </div>
+
+    <div class="panel cyan" style="margin-bottom:26px;">
+      <div class="panel-h" style="color:#00e0ff;">CLAIM &amp; UNSTAKE RULE</div>
+      <ol style="margin:0;padding-left:20px;font-family:'VT323',monospace;font-size:18px;line-height:1.5;">
+        <li>During its own 24 hours, the NFT stays locked: claim and unstake are both disabled.</li>
+        <li>When its 24 hours end, the reward claim becomes available.</li>
+        <li>Unstake unlocks only after that NFT's reward has been claimed and the transaction is confirmed.</li>
+        <li>There is no further waiting after a confirmed claim — unstake immediately.</li>
+      </ol>
+      <div class="note" style="margin-top:14px;">Each NFT is tracked separately against its original staker. NFTs staked at different times unlock at different times.</div>
+    </div>
+
+    <div class="wallet-bar">
+      <button class="btn btn-lime" id="connectBtn">CONNECT WALLET</button>
+      <span class="wallet-addr" id="walletLabel" hidden></span>
+    </div>
+    <div class="tx-status" id="txStatus" hidden></div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+      <h2 style="margin:0;font-family:'Silkscreen',monospace;font-size:15px;color:#ffe500;letter-spacing:2px;">MY XCOPUNKS</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <div style="font-family:'Silkscreen',monospace;font-size:11px;color:#b8ff00;border:2px solid #b8ff00;padding:7px 10px;">ELIGIBLE: <span id="rwEligible">—</span></div>
+        <div id="selCount" style="font-family:'Silkscreen',monospace;font-size:11px;color:#00e0ff;border:2px solid #00e0ff;padding:7px 10px;">SELECTED: 0</div>
+      </div>
+    </div>
+
+    <div class="gtd-loading" id="rwLoading" hidden>
+      <div class="gtd-load-h"><span class="gtd-blip"></span>LOADING YOUR XCOPUNKS...</div>
+    </div>
+    <div class="grid-nft" id="rwGrid"></div>
+    <div class="note" id="rwEmpty" hidden style="text-align:center">Connect your wallet to load your XCOPUNKS.</div>
+
+    <div class="cols" style="margin-top:26px;">
+      <div class="panel">
+        <div class="panel-h">CAMPAIGN TERMS</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="border:2px solid #1f1f1f;padding:11px;"><div style="font-family:'Silkscreen',monospace;font-size:9px;color:#ff7a00;">ENTRY WINDOW</div><div style="font-family:'Press Start 2P',monospace;font-size:13px;margin-top:8px;">24 HOURS</div></div>
+          <div style="border:2px solid #1f1f1f;padding:11px;"><div style="font-family:'Silkscreen',monospace;font-size:9px;color:#ff7a00;">MAX NFTS</div><div style="font-family:'Press Start 2P',monospace;font-size:13px;margin-top:8px;">2,000</div></div>
+          <div style="border:2px solid #1f1f1f;padding:11px;grid-column:1 / -1;"><div style="font-family:'Silkscreen',monospace;font-size:9px;color:#b8ff00;">REWARD</div><div style="font-family:'VT323',monospace;font-size:18px;margin-top:6px;line-height:1.25;">136,525.39 XCPN per staked XCOPUNKS, read live from the campaign contract. Staking is a direct NFT transfer to the campaign contract — one transaction per NFT, no token approval.</div></div>
+        </div>
+      </div>
+      <div class="panel red" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div class="panel-h" style="color:#ff2247;">ENTER CAMPAIGN</div>
+          <p style="font-family:'VT323',monospace;font-size:18px;opacity:.8;margin:0;">Each selected XCOPUNKS enters the campaign and locks for its own 24 hours from the moment it is staked. NFTs already inside the 7-day staking system cannot be selected here.</p>
+        </div>
+        <button id="rwStakeBtn" class="wl-submit" disabled style="margin-top:16px;width:100%;">READING CAMPAIGN STATUS...</button>
+        <a href="../stake/" style="margin-top:12px;text-align:center;font-family:'Silkscreen',monospace;font-size:10px;color:#00e0ff;">7-DAY STAKING IS UNCHANGED → GO TO STAKE</a>
+      </div>
+    </div>
+
+    <h2 style="font-family:'Silkscreen',monospace;font-size:15px;letter-spacing:2px;color:#ffe500;margin:30px 0 14px;">MY 24-HOUR POSITIONS</h2>
+    <div class="mine" id="posGrid"></div>
+    <div class="note" style="margin-top:16px;" id="posNote">Connect your wallet to view your 24-hour campaign positions.</div>
+
+    <div class="note" style="margin-top:16px;">This campaign is separate from Season 1 and from the 7-day staking system. Mint Fee and Creator Fee reward streams are unchanged.</div>
+  </section>
+
+  <footer class="ftr">
+    <div class="ftr-inner">
+      <div><div class="ftr-brand">XCOPUNKS</div><div class="ftr-sub">6000 NFTs · Pixel Art Collection · Robinhood Chain</div></div>
+      <div class="ftr-links">
+        <a href="https://x.com/XCOPUNKS" target="_blank" rel="noopener">X / @XCOPUNKS</a>
+        <a class="os" href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">OPENSEA</a>
+        <button class="ftr-btn" data-xcpn>$XCPN TOKEN</button>
+      </div>
+    </div>
+  </footer>
+</main>
+<div class="toast" id="toast" hidden></div>
+<script>window.XCP_BASE="../";</script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script src="../js/rpc-config.js"></script>
+<script src="../js/web3.js"></script>
+<script src="../js/reward-config.js"></script>
+<script src="../js/reward-app.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

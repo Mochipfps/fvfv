@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XCOPUNKS — Stake</title>
+<meta name="description" content="Stake your XCOPUNKS NFTs to earn $XCPN and ETH rewards.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" type="image/jpeg" href="../assets/favicon/favicon.jpg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="stake">
+<div class="crt"></div>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <nav class="nav-desktop">
+      <a class="navbtn" href="../">GALLERY</a>
+      <a class="navbtn active" href="../stake/">STAKE</a>
+      <a class="navbtn" href="../my-staking/">MY STAKING</a>
+      <a class="navbtn" href="../season-1/">SEASON 1</a>
+      <a class="navbtn" href="../vault/">VAULT</a>
+      <a class="navbtn" href="../how-it-works/">HOW IT WORKS</a>
+      <a class="navbtn" href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">OPENSEA</a>
+      <button class="navbtn" data-xcpn>$XCPN</button>
+    </nav>
+    <div class="nav-mobile">
+      <a class="brand" href="../">XCOPUNKS</a>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu" hidden>
+  <div class="menu-top"><span class="brand">XCOPUNKS</span><button class="menu-close" id="menuClose" aria-label="Close menu">X</button></div>
+  <nav class="menu-list">
+    <a href="../">GALLERY</a>
+    <a class="active" href="../stake/">STAKE</a>
+    <a href="../my-staking/">MY STAKING</a>
+    <a href="../season-1/">SEASON 1</a>
+    <a href="../vault/">VAULT</a>
+    <a href="../how-it-works/">HOW IT WORKS</a>
+    <a href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">OPENSEA</a>
+    <button data-xcpn>$XCPN TOKEN</button>
+  </nav>
+</div>
+
+<main>
+  <section class="section mw-1200">
+    <a class="back" href="../">◄ BACK TO GALLERY</a>
+    <div class="rail">
+      <h1 class="h-title">STAKE</h1>
+      <p class="lead">Stake XCOPUNKS NFTs to earn $XCPN and ETH rewards.</p>
+    </div>
+
+    <div class="wallet-bar">
+      <button class="btn btn-lime" id="connectBtn">CONNECT WALLET</button>
+      <span class="wallet-addr" id="walletLabel" hidden></span>
+    </div>
+    <div class="tx-status" id="txStatus" hidden></div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+      <h2 style="margin:0;font-family:'Silkscreen',monospace;font-size:15px;color:#ffe500;letter-spacing:2px;">MY XCOPUNKS</h2>
+      <div id="selCount" style="font-family:'Silkscreen',monospace;font-size:11px;color:#00e0ff;border:2px solid #00e0ff;padding:7px 10px;">SELECTED: 0</div>
+    </div>
+
+    <div class="gtd-loading" id="ownedLoading" hidden>
+      <div class="gtd-load-h"><span class="gtd-blip"></span>LOADING YOUR XCOPUNKS...</div>
+    </div>
+    <div class="grid-nft" id="ownedGrid"></div>
+    <div class="note" id="ownedEmpty" hidden style="text-align:center">Connect your wallet to load your XCOPUNKS.</div>
+
+    <div class="cols" style="margin-top:26px;">
+      <div class="panel">
+        <div class="panel-h">STAKING TERMS</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="border:2px solid #1f1f1f;padding:11px;"><div style="font-family:'Silkscreen',monospace;font-size:9px;color:#ff7a00;">LOCK PERIOD</div><div style="font-family:'Press Start 2P',monospace;font-size:13px;margin-top:8px;">7 DAYS</div></div>
+          <div style="border:2px solid #1f1f1f;padding:11px;"><div style="font-family:'Silkscreen',monospace;font-size:9px;color:#ff7a00;">PER NFT</div><div style="font-family:'Press Start 2P',monospace;font-size:13px;margin-top:8px;">1 SHARE</div></div>
+          <div style="border:2px solid #1f1f1f;padding:11px;grid-column:1 / -1;"><div style="font-family:'Silkscreen',monospace;font-size:9px;color:#b8ff00;">EARN</div><div style="font-family:'VT323',monospace;font-size:18px;margin-top:6px;line-height:1.25;">Stake XCOPUNKS NFTs to earn $XCPN and ETH rewards. Each NFT locks for its own 7 days.</div></div>
+        </div>
+      </div>
+      <div class="panel red" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div class="panel-h" style="color:#ff2247;">CONFIRM STAKE</div>
+          <p style="font-family:'VT323',monospace;font-size:18px;opacity:.8;margin:0;">Each selected XCOPUNKS is one reward share and locks for its own 7 days from the moment it is staked.</p>
+        </div>
+        <button id="stakeBtn" class="wl-submit" disabled style="margin-top:16px;width:100%;">SELECT XCOPUNKS TO STAKE</button>
+        <a href="../my-staking/" style="margin-top:12px;text-align:center;font-family:'Silkscreen',monospace;font-size:10px;color:#00e0ff;">GO TO MY STAKING →</a>
+      </div>
+    </div>
+
+    <div class="fees" style="margin-top:26px;">
+      <div class="fee">
+        <div class="fee-t">NFT MINT FEE</div><div class="fee-sub">100% TOTAL</div>
+        <div class="fee-row"><div class="fee-pct">90%</div><div class="fee-txt">$XCPN rewards for users who stake XCOPUNKS NFTs</div></div>
+        <div class="fee-row"><div class="fee-pct mut">10%</div><div class="fee-txt mut">Build / Project</div></div>
+      </div>
+      <div class="fee cyan">
+        <div class="fee-t">CREATOR FEE</div><div class="fee-sub">SEPARATE 10% STREAM</div>
+        <div class="fee-row"><div class="fee-pct">7%</div><div class="fee-txt">ETH rewards for users who stake XCOPUNKS NFTs</div></div>
+        <div class="fee-row"><div class="fee-pct mut">3%</div><div class="fee-txt mut">Build / Project</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ftr">
+    <div class="ftr-inner">
+      <div><div class="ftr-brand">XCOPUNKS</div><div class="ftr-sub">6000 NFTs · Pixel Art Collection · Robinhood Chain</div></div>
+      <div class="ftr-links">
+        <a href="https://x.com/XCOPUNKS" target="_blank" rel="noopener">X / @XCOPUNKS</a>
+        <a class="os" href="https://opensea.io/collection/xcopunks/overview" target="_blank" rel="noopener">OPENSEA</a>
+        <button class="ftr-btn" data-xcpn>$XCPN TOKEN</button>
+      </div>
+    </div>
+  </footer>
+</main>
+<div class="toast" id="toast" hidden></div>
+<script>window.XCP_BASE="../";</script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script src="../js/rpc-config.js"></script>
+<script src="../js/web3.js"></script>
+<script src="../js/stake-app.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
